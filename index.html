@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sokratik Math Tutor | Socratic Math Tutor</title>
+<meta name="description" content="An AI-powered Socratic math tutor. Bilingual (EN/TR), client-side, no backend required for Phase 1." />
+
+<!-- KaTeX for LaTeX rendering of equations/formulas -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css"
+      integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"
+        integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+        integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="app-shell">
+
+  <!-- ===================== HEADER ===================== -->
+  <header class="app-header">
+    <div class="brand">
+      <span class="brand-icon" aria-hidden="true">&#8721;</span>
+      <span class="brand-name" data-i18n="appName">Socratic Math Tutor</span>
+    </div>
+
+    <div class="header-controls">
+      <div class="phase-indicator" id="phaseIndicator" aria-live="polite">
+        <span class="phase-step" data-phase="1">1</span>
+        <span class="phase-line"></span>
+        <span class="phase-step" data-phase="2">2</span>
+        <span class="phase-line"></span>
+        <span class="phase-step" data-phase="3">3</span>
+      </div>
+
+      <button id="langToggleBtn" class="lang-toggle" type="button" aria-label="Switch language">
+        <span id="langToggleLabel">TR</span>
+      </button>
+
+      <button id="resetBtn" class="icon-btn" type="button" title="Reset progress" data-i18n-title="resetTitle">
+        &#8635;
+      </button>
+    </div>
+  </header>
+
+  <!-- ===================== TOPIC / PHASE BAR ===================== -->
+  <div class="topic-bar">
+    <div>
+      <div class="topic-label" data-i18n="topicLabel">Current Topic</div>
+      <div class="topic-name" id="topicName" data-i18n="topicName">Quadratic Functions &mdash; Vertex Form</div>
+    </div>
+    <div class="phase-name" id="phaseName" data-i18n="phase1Name">Phase 1: Concept Introduction</div>
+  </div>
+
+  <!-- ===================== CHAT WINDOW ===================== -->
+  <main class="chat-window" id="chatWindow" aria-live="polite">
+    <!-- Messages are injected here by app.js -->
+  </main>
+
+  <!-- ===================== VISUAL TOOL PANEL (hidden by default) ===================== -->
+  <div class="visual-panel" id="visualPanel" hidden>
+    <div class="visual-panel-header">
+      <strong data-i18n="visualPanelTitle">Dynamic Visual Verification</strong>
+      <button class="icon-btn" id="closeVisualPanel" aria-label="Close">&times;</button>
+    </div>
+    <p id="visualPanelText" data-i18n="visualPanelText">
+      Before checking, predict what will happen. Then open an interactive graphing tool or dynamic geometry
+      software in a separate tab and test your prediction using the function and sliders described in the chat.
+    </p>
+  </div>
+
+  <!-- ===================== INPUT AREA ===================== -->
+  <footer class="input-area">
+    <div class="quick-actions">
+      <button id="visualToolBtn" class="ghost-btn" type="button" data-i18n="visualToolBtn">
+        &#128200; Use a Graphing Tool
+      </button>
+      <button id="nextPhaseBtn" class="primary-btn" type="button" data-i18n="nextPhaseBtn">
+        Next Phase &rarr;
+      </button>
+    </div>
+    <form id="chatForm" class="chat-form" autocomplete="off">
+      <textarea
+        id="userInput"
+        rows="1"
+        data-i18n-placeholder="inputPlaceholder"
+        placeholder="Type your answer or question..."
+        required></textarea>
+      <button type="submit" class="send-btn" id="sendBtn" aria-label="Send" data-i18n-title="sendTitle">
+        &#10148;
+      </button>
+    </form>
+    <div class="storage-note" data-i18n="storageNote">
+      Your progress is saved automatically on this device.
+    </div>
+  </footer>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
